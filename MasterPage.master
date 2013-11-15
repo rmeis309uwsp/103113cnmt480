@@ -33,6 +33,7 @@
             <ul id="nav">
                 <li><a href="~/Pages/Home.aspx" runat="server">Home</a></li>
                 <li><a href="~/Pages/Inventory_Overview.aspx" runat="server">Manage Items</a></li>
+
             </ul>
         </div>
         <div id="content_area">

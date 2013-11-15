@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
+using System.Data.SqlClient;
+using System.Data.Sql;
 
 public partial class Pages_Inventory_Add : System.Web.UI.Page
 {
@@ -31,12 +33,12 @@ public partial class Pages_Inventory_Add : System.Web.UI.Page
     }
     private void ClearTextFields()
     {
-        txtCountry.Text = "";
+       
         txtName.Text = "";
-        txtPrice.Text = "";
-        txtReview.Text = "";
-        txtRoast.Text = "";
-        txtType.Text = "";
+        txtCategory.Text = "";
+        txtDescription.Text = "";
+   //     txtAvailable.Text = "";
+    //    txtStaff.Text = "";
     }
 
 
@@ -57,19 +59,25 @@ public partial class Pages_Inventory_Add : System.Web.UI.Page
     }
     protected void btnSave_Click(object sender, EventArgs e)
     {
+      
+    
+
+        
         try
         {
+     
             string name = txtName.Text;
-            string type = txtType.Text;
-            double price = Convert.ToDouble(txtPrice.Text);
-            price = price / 100;
-            string roast = txtRoast.Text;
-            string country = txtCountry.Text;
+            string category = txtCategory.Text;
+            string description = txtDescription.Text;
             string image = "../Images/Inventory/" + ddlImage.SelectedValue;
-            string review = txtReview.Text;
+           // string available = txtAvailable.Text;
+            //int available = Convert.ToInt32(txtAvailable.Text);
+           // string staff = txtStaff.Text;
+   
+  
 
-            Coffee coffee = new Coffee(name, type, price, roast, country, image, review);
-            ConnectionClass.AddInventory(coffee);
+            Items items = new Items(name, category, description, image/*, available, staff*/);
+            ConnectionClass.AddInventory(items);  
             lblResult.Text = "Upload succesful!";
             ClearTextFields();
         }
