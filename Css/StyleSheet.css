@@ -148,6 +148,7 @@ body
     cursor:pointer;
 }
 
+<<<<<<< HEAD
 
 .graytitle
 {
@@ -157,6 +158,8 @@ body
 
 
 .coffeeTable
+=======
+>>>>>>> origin/Boris
 .itemTable
 {
     width: 750px;
