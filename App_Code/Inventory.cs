@@ -1,33 +1,36 @@
-﻿public class Coffee
+﻿public class Items
 {
-    public int id { get; set; }
+    public int itemid { get; set; }
     public string name { get; set; }
-    public string type { get; set; }
-    public double price { get; set; }
-    public string roast { get; set; }
-    public string country { get; set; }
-    public string image { get; set; }
-    public string review { get; set; }
+    public string categoryname { get; set; }
+    public string description { get; set; }
+    public string imagepath { get; set; }
+    public bool available { get; set; }
+    public bool staffonly { get; set; }
 
-    public Coffee(int id, string name, string type, double price, string roast, string country, string image, string review)
+
+    public Items(int id, string name, string category,string description, string image, bool available, bool staff)
     {
-        this.id = id;
+        this.itemid = id;
         this.name = name;
-        this.type = type;
-        this.price = price;
-        this.roast = roast;
-        this.country = country;
-        this.image = image;
-        this.review = review;
+        this.categoryname = category;
+        this.description = description;
+        this.imagepath = image;
+        this.available = available;
+        this.staffonly = staff;
+       
+        
     }
-    public Coffee(string name, string type, double price, string roast, string country, string image, string review)
-    {
-        this.name = name;
-        this.type = type;
-        this.price = price;
-        this.roast = roast;
-        this.country = country;
-        this.image = image;
-        this.review = review;
+  //  public Items(string name, string category, string description, string image/*, string available, string staff*/)
+  //  {
+       
+   //     this.name = name;
+    //    this.categoryname = category;
+    //    this.description = description;
+    //    this.imagepath = image;
+    //    this.available = available;
+    //    this.staffonly = staff;
+
+
     }
 }

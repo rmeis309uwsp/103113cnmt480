@@ -15,10 +15,10 @@ public static class ConnectionClass
         command = new SqlCommand("", conn);
     }
 
-    public static ArrayList GetInventoryByType(string coffeeType)
+    public static ArrayList GetInventoryByType(string inventoryType)
     {
         ArrayList list = new ArrayList();
-        string query = string.Format("SELECT * FROM coffee WHERE type LIKE '{0}'", coffeeType);
+        string query = string.Format("SELECT * FROM items WHERE type LIKE '{0}'", inventoryType);
 
         try
         {
@@ -30,15 +30,15 @@ public static class ConnectionClass
             {
                 int id = reader.GetInt32(0);
                 string name = reader.GetString(1);
-                string type = reader.GetString(2);
-                double price = reader.GetDouble(3);
-                string roast = reader.GetString(4);
-                string country = reader.GetString(5);
-                string image = reader.GetString(6);
-                string review = reader.GetString(7);
+                string category = reader.GetString(2);
+                string description = reader.GetString(3);
+                string image = reader.GetString(4);
+                bool avalaible = reader.GetBoolean(5);
+                bool staff = reader.GetBoolean(6);
 
-                Coffee coffee = new Coffee(id, name, type, price, roast, country, image, review);
-                list.Add(coffee);
+
+                Items items = new Items(id, name, category, description, image, avalaible, staff);
+                list.Add(items);
             }
         }
         finally
@@ -49,13 +49,13 @@ public static class ConnectionClass
         return list;
     }
 
-    public static void AddInventory(Coffee coffee)
+ /*   public static void AddInventory(Items items)
     {
         string query = string.Format(
-            @"INSERT INTO coffee VALUES ('{0}', '{1}', @prices, '{2}', '{3}','{4}', '{5}')",
-            coffee.name, coffee.type, coffee.roast, coffee.country, coffee.image, coffee.review);
+            @"INSERT INTO items VALUES ('{0}', '{1}', '{2}', '{3}')",
+            items.name, items.categoryname, items.description, items.imagepath, items.available, item.staffonly);
         command.CommandText = query;
-        command.Parameters.Add(new SqlParameter("@prices", coffee.price));
+        command.Parameters.Add(new SqlParameter("@prices", items.description));
         try
         {
             conn.Open();
@@ -66,9 +66,9 @@ public static class ConnectionClass
             conn.Close();
             command.Parameters.Clear();
         }
-    }
+    }*/
 
-    public static User LoginUser(string login, string password)
+  /*  public static User LoginUser(string login, string password)
     {
         //Check if user exists
         string query = string.Format("SELECT COUNT(*) FROM CNMTInventory.dbo.users2 WHERE name = '{0}'", login);
@@ -122,9 +122,9 @@ public static class ConnectionClass
 
             conn.Close();
         }
-    }
+    }*/
 
-    public static string RegisterUser(User user)
+    /*public static string RegisterUser(User user)
     {
         //Check if user exists
         string query = string.Format("SELECT COUNT(*) FROM users2 WHERE name = '{0}'", user.Login);
@@ -154,5 +154,5 @@ public static class ConnectionClass
         {
             conn.Close();
         }
-    }
+    }*/
 }

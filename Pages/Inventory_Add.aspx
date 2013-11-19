@@ -2,56 +2,55 @@
     CodeFile="Inventory_Add.aspx.cs" Inherits="Pages_Inventory_Add" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <h3>
-        Add new Coffee</h3>
-    <table cellspacing="15" class="coffeeTable">
+    <h3>Add new Item</h3>
+    <table cellspacing="15" class="itemTable">
+        
         <tr>
-            <td style="width: 80px">
+            <td style="width: 98px">
                 <b>Name:</b>
             </td>
             <td>
                 <asp:TextBox ID="txtName" runat="server" Width="300px"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtName" ErrorMessage="*"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName" ErrorMessage="*"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
-            <td style="width: 80px">
-                <b>Type:</b>
+            <td style="width: 98px">
+                <b>Category:</b>
             </td>
             <td>
-                <asp:TextBox ID="txtType" runat="server" Width="300px"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPrice" ErrorMessage="*"></asp:RequiredFieldValidator>
+                <asp:TextBox ID="txtCategory" runat="server" Width="300px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtCategory" ErrorMessage="*"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
-            <td style="width: 80px">
-                <b>Price:</b>
+            <td style="width: 98px; height: 90px;">
+                <b>Description:</b>
+            </td>
+            <td style="height: 90px">
+                <asp:TextBox ID="txtDescription" runat="server" Width="300px" Height="66px" TextMode="MultiLine"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtDescription" ErrorMessage="*"></asp:RequiredFieldValidator>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 98px">
+                <b>Available:</b>
             </td>
             <td>
-                <asp:TextBox ID="txtPrice" runat="server" Width="300px"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtPrice" ErrorMessage="*"></asp:RequiredFieldValidator>
+                <asp:TextBox ID="txtAvailable" runat="server" Width="50px"></asp:TextBox>
+               <!-- <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtAvailable" ErrorMessage="*"></asp:RequiredFieldValidator>-->
             </td>
         </tr>
-        <tr>
-            <td style="width: 80px">
-                <b>Roast:</b>
+        <tr>           <td style="width: 98px">
+                <b>Staff Only:</b>
             </td>
             <td>
-                <asp:TextBox ID="txtRoast" runat="server" Width="300px"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtRoast" ErrorMessage="*"></asp:RequiredFieldValidator>
+            <!--    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtStaff" ErrorMessage="*"></asp:RequiredFieldValidator>-->
+                <asp:TextBox ID="txtStaff" runat="server" Width="34px"></asp:TextBox>
             </td>
         </tr>
         <tr>
-            <td style="width: 80px">
-                <b>Country:</b>
-            </td>
-            <td>
-                <asp:TextBox ID="txtCountry" runat="server" Width="300px"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtCountry" ErrorMessage="*"></asp:RequiredFieldValidator>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 80px; height: 63px;">
+            <td style="width: 98px; height: 63px;">
                 <b>Image:</b>
             </td>
             <td style="height: 63px">
@@ -64,14 +63,7 @@
             </td>
             
         </tr>
-        <tr>
-            <td style="width: 80px">
-                <b>Review:</b>
-            </td>
-            <td>
-                <asp:TextBox ID="txtReview" runat="server" Height="98px" TextMode="MultiLine" Width="332px"></asp:TextBox>
-            </td>
-        </tr>
+       
     </table>
     <asp:Label ID="lblResult" runat="server" Text=""></asp:Label>
     <br />

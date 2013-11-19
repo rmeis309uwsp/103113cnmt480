@@ -157,6 +157,7 @@ body
 
 
 .coffeeTable
+.itemTable
 {
     width: 750px;
     height: 250px;
@@ -166,13 +167,13 @@ body
     
 }
 
-.coffeeTable tr th, .coffeeTable tr td
+.itemTable tr th, .itemTable tr td
 {
     text-align: left;
     padding: 0px 5px 0 5px;
 }
 
-.coffeeTable img
+.itemTable img
 {
     padding: 0px 10px 10px 10px;
     height: 150px;
