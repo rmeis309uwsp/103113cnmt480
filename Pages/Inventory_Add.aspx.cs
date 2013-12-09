@@ -76,8 +76,8 @@ public partial class Pages_Inventory_Add : System.Web.UI.Page
    
   
 
-            Items items = new Items(name, category, description, image/*, available, staff*/);
-            ConnectionClass.AddInventory(items);  
+           // Items items = new Items(name, category, description, image/*, available, staff*/);
+            //ConnectionClass.AddInventory(items);  
             lblResult.Text = "Upload succesful!";
             ClearTextFields();
         }

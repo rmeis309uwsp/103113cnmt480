@@ -15,30 +15,35 @@ public partial class Pages_Home : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        getInventory();
+        if (inventoryList.InnerHtml == "")
+        {
+            getInventory();
+        }
     }
 
     protected void getInventory()
     {
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
         string categoryQuery = "SELECT * FROM itemcategories";
-        SqlCommand categoryCommand = new SqlCommand(categoryQuery, con);
+        SqlCommand categoryCommand = new SqlCommand(categoryQuery, conn);
 
         try
         {
-            con.Open();
+            
+            conn.Open();
             SqlDataReader reader = categoryCommand.ExecuteReader();
             int categoryNum = 0;
+            inventoryList.InnerHtml += "<a href='~/Pages/Make_a_Request.aspx' runat='server'><h2>Request an Item</h2></a>";
 
             while (reader.Read())
             {
                 //Div listing category - laptop, camera, etc. Gives divs ids of "category1", "category2", etc
                 inventoryList.InnerHtml += "<div id='category" + categoryNum + "' runat='server'><h2 id='category" + categoryNum +
-               "title'>" + reader["categoryname"].ToString() + "</h2>";
+               "title'>" + reader["categoryName"].ToString() + "</h2>";
 
-                string itemQuery = "SELECT * FROM items WHERE categoryname= @categoryName";
-                SqlCommand itemCommand = new SqlCommand(itemQuery, con);
-                itemCommand.Parameters.AddWithValue("@categoryName", reader["categoryname"].ToString());
+                string itemQuery = "SELECT * FROM items WHERE categoryName= @categoryName";
+                SqlCommand itemCommand = new SqlCommand(itemQuery, conn);
+                itemCommand.Parameters.AddWithValue("@categoryName", reader["categoryName"].ToString());
                 SqlDataReader itemReader = itemCommand.ExecuteReader();
 
                 int itemNum = 0;
@@ -58,7 +63,7 @@ public partial class Pages_Home : System.Web.UI.Page
                     }
 
                     String staffonly;
-                    if (itemReader["staffonly"].ToString().Equals(1) || itemReader["staffonly"].ToString().Equals("True"))
+                    if (itemReader["staffOnly"].ToString().Equals(1) || itemReader["staffOnly"].ToString().Equals("True"))
                     {
                         staffonly = "(Staff only)";
                     }
@@ -74,7 +79,7 @@ public partial class Pages_Home : System.Web.UI.Page
                     //Title divs are given ids like category1item2title
                     String titleId = "category" + categoryNum + "item" + itemNum + "title";
                     String descriptionId = "category" + categoryNum + "item" + itemNum + "description";
-                    String imagesrc = itemReader["imagepath"].ToString();
+                    String imagesrc = itemReader["imagePath"].ToString();
                     if (imagesrc == "")
                     {
                         imagesrc = "../Images/default.png";
@@ -87,10 +92,11 @@ public partial class Pages_Home : System.Web.UI.Page
                         + "<div id='" + descriptionId + "' class='descriptionclass' style='display:none'>" 
                             + "<img height='200px' width='260px' src='" + imagesrc + "'/><br/>"
                             + itemReader["description"].ToString() + "<br/>"
-                            + "<button type='button'>Make A Request</button>"
+                          //  + "<button type='button' id='" + itemReader["itemId"].ToString() + "' onClientClick='makeRequest(" + itemReader["itemId"] + ", " + itemReader["name"] + ")'>Make A Request</button>"
                             + "</div>";
 
                     inventoryList.InnerHtml += "</div>";
+                  //  itemAt.Add(itemReader["itemId"].ToString(), itemReader["itemName"].ToString());
                     itemNum++;
                 }
 
@@ -102,12 +108,18 @@ public partial class Pages_Home : System.Web.UI.Page
         catch (SqlException ex)
         {
             throw ex;
+           // inventoryList.InnerHtml = "<h2>Server currently unavailable.</h2>";
         }
         finally
         {
-            con.Close();
+            conn.Close();
         }
 
     }
+
+    //public void makeRequest(string idnum, string itemname)
+    //{
+    //    inventoryList.InnerHtml += "<p>" + idnum + " " + itemname + "</p>";
+    //}
 
 }
