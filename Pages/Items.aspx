@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <p>
-        select a c<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="sds_category" DataTextField="categoryname" DataValueField="categoryname">
+        select a c<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="sds_category" DataTextField="categoryname" DataValueField="categoryname" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged1">
         </asp:DropDownList>
         <asp:SqlDataSource ID="sds_category" runat="server" ConnectionString="Data Source=cnmtsrv1.uwsp.edu;Initial Catalog=CNMTInventory;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [itemcategories] ORDER BY [categoryname]"></asp:SqlDataSource>
         ategory

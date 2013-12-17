@@ -28,48 +28,41 @@ public partial class Pages_Items : System.Web.UI.Page
 
         StringBuilder sb = new StringBuilder();
 
-        foreach (Coffee coffee in inventoryList)
+        foreach (Items items in inventoryList)
         {
             sb.Append(
                 string.Format(
-                    @"<table class='coffeeTable'>
+                    @"<table class='itemTable'>
             <tr>
-                <th rowspan='6' width='150px'><img runat='server' src='{6}' /></th>
+                <th rowspan='2' width='150px'><img runat='server' src='{2}' /></th>
                 <th width='50px'>Name: </td>
                 <td>{0}</td>
             </tr>
 
             <tr>
-                <th>Type: </th>
+                <th>Category: </th>
                 <td>{1}</td>
             </tr>
 
             <tr>
-                <th>Price: </th>
-                <td>{2} $</td>
+                <th>Description: </th>
+                <td>{2} </td>
             </tr>
-
             <tr>
-                <th>Roast: </th>
-                <td>{3}</td>
+                <th>Description: </th>
+                <td>{2} </td>
             </tr>
-
-            <tr>
-                <th>Origin: </th>
-                <td>{4}</td>
-            </tr>
-
-            <tr>
-                <td colspan='2'>{5}</td>
-            </tr>           
+                   
             
            </table>",
-                    coffee.name, coffee.type, coffee.price, coffee.roast, coffee.country, coffee.review, coffee.image));
-
-            lblOuput.Text = sb.ToString();
+                    items.name, items.categoryname, items.description /*items.available, items.staffonly,  items.imagepath*/));
+            
+            Label1.Text = sb.ToString();
         }
+    
     }
-    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+  
+    protected void DropDownList1_SelectedIndexChanged1(object sender, EventArgs e)
     {
         FillPage();
     }
