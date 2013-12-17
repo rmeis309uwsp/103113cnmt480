@@ -17,8 +17,7 @@
             <b>Select a category:</b>
         </td>
         <td>
-            <asp:DropDownList ID="categoryList" runat="server" OnSelectedIndexChanged="categoryList_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
-            <asp:RequiredFieldValidator ID="categoryRequired" runat="server" ControlToValidate="categoryList" ErrorMessage="*"></asp:RequiredFieldValidator>
+            <asp:DropDownList ID="categoryList" runat="server" OnSelectedIndexChanged="categoryList_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
             <!--TODO: RegularExpressionValidator"-->
         </td>
         <td style="width:98px">
@@ -26,7 +25,6 @@
         </td>
         <td>
             <asp:DropDownList ID="itemList" runat="server" OnSelectedIndexChanged="itemList_SelectedIndexChanged"></asp:DropDownList>
-            <asp:RequiredFieldValidator ID="itemRequired" runat="server" ControlToValidate="itemList" ErrorMessage="*"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
@@ -99,12 +97,11 @@
             <b>Purpose for checkout:</b>
         </td>
         <td>
-            <asp:TextBox ID="purposeTb" runat="server" Width="300px" TextMode="MultiLine"></asp:TextBox>
+            <asp:TextBox ID="purposeTb" runat="server" Width="400px" TextMode="MultiLine"></asp:TextBox>
             <asp:RequiredFieldValidator ID="purposeRequired" runat="server" ControlToValidate="purposeTb" ErrorMessage="*"></asp:RequiredFieldValidator>
             
         </td>
     </tr>       
 </table>
-<asp:Button ID="saveRequest" runat="server" Text="Make Request"
-        onclick="saveRequest_Click"  />
+<asp:Button ID="saveRequest" runat="server" Text="Make Request" onclick="saveRequest_Click"/>
 </asp:Content>

@@ -33,7 +33,7 @@ public partial class Pages_Home : System.Web.UI.Page
             conn.Open();
             SqlDataReader reader = categoryCommand.ExecuteReader();
             int categoryNum = 0;
-            inventoryList.InnerHtml += "<a href='~/Pages/Make_a_Request.aspx' runat='server'><h2>Request an Item</h2></a>";
+            inventoryList.InnerHtml += "<a href='Make_a_Request.aspx' runat='server'><h2>Request an Item</h2></a>";
 
             while (reader.Read())
             {
@@ -107,7 +107,7 @@ public partial class Pages_Home : System.Web.UI.Page
         }
         catch (SqlException ex)
         {
-            throw ex;
+           throw ex;
            // inventoryList.InnerHtml = "<h2>Server currently unavailable.</h2>";
         }
         finally

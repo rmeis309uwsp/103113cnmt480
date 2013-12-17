@@ -12,12 +12,13 @@ using System.Text.RegularExpressions;
 
 public partial class Pages_Make_a_Request : System.Web.UI.Page
 {
-
     public int itemId;
-    List<int> itemNums = new List<int>();
+    List<int> itemNums;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        itemNums = new List<int>();
+        if(!IsPostBack){
         while (itemList.Items.Count > 0)
         {
             itemList.Items.RemoveAt(0);
@@ -26,7 +27,7 @@ public partial class Pages_Make_a_Request : System.Web.UI.Page
         {
             loadItemCategories();
         }
-
+        }
     }
 
     protected void loadItemCategories()
@@ -154,7 +155,7 @@ public partial class Pages_Make_a_Request : System.Web.UI.Page
 
             conn.Open();
             SqlDataReader reader = itemsCommand.ExecuteReader();
-            itemNums = new List<int>();
+          //  itemNums = new List<int>();
 
             while (reader.Read())
             {
