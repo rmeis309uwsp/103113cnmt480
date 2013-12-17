@@ -18,7 +18,7 @@ public static class ConnectionClass
     public static ArrayList GetInventoryByType(string inventoryType)
     {
         ArrayList list = new ArrayList();
-        string query = string.Format("SELECT * FROM items WHERE type LIKE '{0}'", inventoryType);
+        string query = string.Format("SELECT * FROM items", inventoryType);
 
         try
         {
@@ -28,17 +28,17 @@ public static class ConnectionClass
 
             while (reader.Read())
             {
-                int id = reader.GetInt32(0);
+                int itemid = reader.GetInt32(0);
                 string name = reader.GetString(1);
-                string category = reader.GetString(2);
+                string categoryname = reader.GetString(2);
                 string description = reader.GetString(3);
-                string image = reader.GetString(4);
-                bool avalaible = reader.GetBoolean(5);
-                bool staff = reader.GetBoolean(6);
+        //        string imagepath = reader.GetString(4);
+         //       bool available = reader.GetBoolean(4);
+         //       bool staffonly = reader.GetBoolean(5);
 
 
-                Items items = new Items(id, name, category, description, image, avalaible, staff);
-                list.Add(items);
+                Items Items = new Items(itemid, name, categoryname, description/* imagepath, available, staffonly*/);
+                list.Add(Items);
             }
         }
         finally
@@ -49,13 +49,15 @@ public static class ConnectionClass
         return list;
     }
 
- /*   public static void AddInventory(Items items)
+    public static void AddInventory(Items items)
     {
         string query = string.Format(
-            @"INSERT INTO items VALUES ('{0}', '{1}', '{2}', '{3}')",
-            items.name, items.categoryname, items.description, items.imagepath, items.available, item.staffonly);
+            @"INSERT INTO items VALUES ('{0}')",
+            items.name/*, items.categoryname, items.description*/);
         command.CommandText = query;
-        command.Parameters.Add(new SqlParameter("@prices", items.description));
+  //      command.Parameters.Add("@name", SqlDbType.VarChar).Value = this.txtName.Text;
+        
+        //       command.Parameters.Add(new SqlParameter("@prices", items.description));
         try
         {
             conn.Open();
@@ -66,7 +68,7 @@ public static class ConnectionClass
             conn.Close();
             command.Parameters.Clear();
         }
-    }*/
+    }
 
   /*  public static User LoginUser(string login, string password)
     {
