@@ -125,37 +125,10 @@ body
     color: lightblue;
 }
 
-
-.imgLeft
-{
-    float: left;
-    width: 240px;
-    height: 150px;
-    margin: 0px 10px 10px 0;
-    padding: 10px;
-}
-
-.imgRight
-{
-    float: right;
-    width: 200px;
-    height: 250px;
-    margin: 0px 0 10px 10px;
-    padding: 10px;
-}
-
 .italic
 {
     font-style:italic;
 }
-
-/*.itemcontainer
-{
-    border-left:2px solid #000;   
-    border-right:2px solid #000;  
-    border-top:1px solid #000;  
-    border-bottom:1px solid #000;  
-}*/
 
 .descriptionclass
 {
@@ -167,6 +140,17 @@ body
 .descriptionclass img
 {
     float:left;   
+    margin:20px;
+}
+
+.nav-toggle
+{
+    cursor:pointer;
+}
+
+.graytitle
+{
+    background-color:Gray;
 }
 
 .itemTable
@@ -192,4 +176,22 @@ body
     width: 150px;
 }
 
+
+.imgLeft
+{
+    float: left;
+    width: 240px;
+    height: 150px;
+    margin: 0px 10px 10px 0;
+    padding: 10px;
+}
+
+.imgRight
+{
+    float: right;
+    width: 200px;
+    height: 250px;
+    margin: 0px 0 10px 10px;
+    padding: 10px;
+}
 
