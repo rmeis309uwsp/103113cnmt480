@@ -54,7 +54,11 @@
             <asp:RequiredFieldValidator ID="emailRequired" runat="server" ControlToValidate="emailTb" ErrorMessage="* Required"></asp:RequiredFieldValidator>
               <asp:RegularExpressionValidator ID="emailRegEx" runat="server"
             ErrorMessage="Email must be in the form of address@uwsp.edu." ControlToValidate="emailTb" ForeColor="Red"
+<<<<<<< HEAD
             ValidationExpression="[0-9A-Za-z]{3,}@^uwsp$\.^edu$"></asp:RegularExpressionValidator>
+=======
+            ValidationGroup="RequestValidate" ValidationExpression="[0-9A-Za-z]{3,}@^uwsp$\.^edu$"></asp:RegularExpressionValidator>
+>>>>>>> origin/12/19
         </td>
     </tr>
     <tr>
@@ -73,8 +77,11 @@
         <td style="height: 90px">
             <asp:TextBox ID="uwspIdTb" runat="server" Width="300px"></asp:TextBox>
             <asp:RequiredFieldValidator ID="uwspIdRequired" runat="server" ControlToValidate="uwspIdTb" ErrorMessage="* Required"></asp:RequiredFieldValidator>
+<<<<<<< HEAD
             <asp:RegularExpressionValidator ID="uwspIdExp" runat="server"
             ErrorMessage="Must be an 8-digit number." ControlToValidate="uwspIdTb" ForeColor="Red" ValidationExpression="[0-9]{8}"></asp:RegularExpressionValidator>
+=======
+>>>>>>> origin/12/19
         </td>
     </tr>
     <tr>
