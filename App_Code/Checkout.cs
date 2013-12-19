@@ -19,15 +19,16 @@ public class Checkout
     public DateTime? dueDate { get; set; }
     public DateTime? checkOutDate { get; set; }
     public DateTime? checkInDate { get; set; }
-    public DateTime requestSentDate { get; set; }
-    public DateTime requestedForDate { get; set; }
+    public DateTime? requestSentDate { get; set; }
+    public DateTime? requestedForDate { get; set; }
     public bool agreementSigned { get; set; }
     public bool activeCheckout { get; set; }
     public bool activeRequest { get; set; }
+    public decimal fine { get; set; }
 
     public Checkout(int itemId, string personUwspId, string personRole, string personEmail, string personPhone,
-        string personFName, string personLName, string purpose, DateTime? dueDate, DateTime? checkOutDate, DateTime? checkInDate, DateTime requestSentDate, DateTime requestedForDate, bool aggreementSigned,
-        bool activeCheckout, bool activeRequest)
+        string personFName, string personLName, string purpose, DateTime? dueDate, DateTime? checkOutDate, DateTime? checkInDate, DateTime? requestSentDate, DateTime? requestedForDate, bool aggreementSigned,
+        bool activeCheckout, bool activeRequest, decimal fine)
     {
         this.itemId = itemId;
         this.personUwspId = personUwspId;
@@ -45,5 +46,6 @@ public class Checkout
         this.agreementSigned = agreementSigned;
         this.activeCheckout = activeCheckout;
         this.activeRequest = activeRequest;
+        this.fine = fine;
     }
 }

@@ -53,7 +53,7 @@ public partial class Pages_Home : System.Web.UI.Page
                     //For each item:
                     
                     String available;
-                    if (itemReader["available"].ToString().Equals(1) || itemReader["available"].ToString().Equals("True"))
+                    if (itemReader["available"].Equals(true))
                     {
                         available = "Available";
                     }
@@ -63,7 +63,7 @@ public partial class Pages_Home : System.Web.UI.Page
                     }
 
                     String staffonly;
-                    if (itemReader["staffOnly"].ToString().Equals(1) || itemReader["staffOnly"].ToString().Equals("True"))
+                    if (itemReader["staffOnly"].Equals(true))
                     {
                         staffonly = "(Staff only)";
                     }
@@ -92,11 +92,9 @@ public partial class Pages_Home : System.Web.UI.Page
                         + "<div id='" + descriptionId + "' class='descriptionclass' style='display:none'>" 
                             + "<img height='200px' width='260px' src='" + imagesrc + "'/><br/>"
                             + itemReader["description"].ToString() + "<br/>"
-                          //  + "<button type='button' id='" + itemReader["itemId"].ToString() + "' onClientClick='makeRequest(" + itemReader["itemId"] + ", " + itemReader["name"] + ")'>Make A Request</button>"
                             + "</div>";
 
                     inventoryList.InnerHtml += "</div>";
-                  //  itemAt.Add(itemReader["itemId"].ToString(), itemReader["itemName"].ToString());
                     itemNum++;
                 }
 
@@ -108,7 +106,6 @@ public partial class Pages_Home : System.Web.UI.Page
         catch (SqlException ex)
         {
            throw ex;
-           // inventoryList.InnerHtml = "<h2>Server currently unavailable.</h2>";
         }
         finally
         {
@@ -116,10 +113,5 @@ public partial class Pages_Home : System.Web.UI.Page
         }
 
     }
-
-    //public void makeRequest(string idnum, string itemname)
-    //{
-    //    inventoryList.InnerHtml += "<p>" + idnum + " " + itemname + "</p>";
-    //}
 
 }

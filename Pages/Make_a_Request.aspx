@@ -9,8 +9,9 @@
 <link rel="Stylesheet" href="../Css/JQueryUI/jquery-ui.css" />
 <link rel="Stylesheet" href="../Css/JQueryUI/jquery.ui.base.css" />
 
-<h3>Make a Request</h3>
-<table cellspacing="15" class="itemTable">
+<h3>Make a Request</h3><br />
+<h3 id="requestConfirm" runat="server" style="font-style:italic;"></h3><br />
+<table cellspacing="15" class="itemTable" id="requestForm" runat="server">
         
     <tr>
         <td style="width:98px">
@@ -18,13 +19,12 @@
         </td>
         <td>
             <asp:DropDownList ID="categoryList" runat="server" OnSelectedIndexChanged="categoryList_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-            <!--TODO: RegularExpressionValidator"-->
         </td>
         <td style="width:98px">
             <b>Select an item:</b>
         </td>
         <td>
-            <asp:DropDownList ID="itemList" runat="server" OnSelectedIndexChanged="itemList_SelectedIndexChanged"></asp:DropDownList>
+            <asp:DropDownList ID="itemList" runat="server" OnSelectedIndexChanged="itemList_SelectedIndexChanged" AutoPostBack="true"  ViewStateMode="Enabled"></asp:DropDownList>
         </td>
     </tr>
     <tr>
@@ -33,7 +33,7 @@
         </td>
         <td>
             <asp:TextBox ID="firstNameTb" runat="server" Width="300px"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="firstNameRequired" runat="server" ControlToValidate="firstNameTb" ErrorMessage="*"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="firstNameRequired" runat="server" ControlToValidate="firstNameTb" ErrorMessage="* Required"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
@@ -42,7 +42,7 @@
         </td>
         <td>
             <asp:TextBox ID="lastNameTb" runat="server" Width="300px"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="lastNameRequired" runat="server" ControlToValidate="lastNameTb" ErrorMessage="*"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="lastNameRequired" runat="server" ControlToValidate="lastNameTb" ErrorMessage="* Required"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
@@ -51,8 +51,10 @@
         </td>
         <td>
             <asp:TextBox ID="emailTb" runat="server" Width="300px"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="emailRequired" runat="server" ControlToValidate="emailTb" ErrorMessage="*"></asp:RequiredFieldValidator>
-            <!-- Add email format validator -->
+            <asp:RequiredFieldValidator ID="emailRequired" runat="server" ControlToValidate="emailTb" ErrorMessage="* Required"></asp:RequiredFieldValidator>
+              <asp:RegularExpressionValidator ID="emailRegEx" runat="server"
+            ErrorMessage="Email must be in the form of address@uwsp.edu." ControlToValidate="emailTb" ForeColor="Red"
+            ValidationExpression="[0-9A-Za-z]{3,}@^uwsp$\.^edu$"></asp:RegularExpressionValidator>
         </td>
     </tr>
     <tr>
@@ -61,7 +63,7 @@
         </td>
         <td>
             <asp:TextBox ID="phoneNumTb" runat="server" Width="300px"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="phoneNumRequired" runat="server" ControlToValidate="phoneNumTb" ErrorMessage="*"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="phoneNumRequired" runat="server" ControlToValidate="phoneNumTb" ErrorMessage="* Required"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
@@ -70,7 +72,9 @@
         </td>
         <td style="height: 90px">
             <asp:TextBox ID="uwspIdTb" runat="server" Width="300px"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="uwspIdRequired" runat="server" ControlToValidate="uwspIdTb" ErrorMessage="*"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="uwspIdRequired" runat="server" ControlToValidate="uwspIdTb" ErrorMessage="* Required"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="uwspIdExp" runat="server"
+            ErrorMessage="Must be an 8-digit number." ControlToValidate="uwspIdTb" ForeColor="Red" ValidationExpression="[0-9]{8}"></asp:RegularExpressionValidator>
         </td>
     </tr>
     <tr>
@@ -80,7 +84,7 @@
                    <asp:ListItem runat="server" text="Student" />
                    <asp:ListItem runat="server" text="Faculty"/>
             </asp:RadioButtonList>
-            <asp:RequiredFieldValidator ID="roleRequired" runat="server" ControlToValidate="roleButtons" ErrorMessage="*"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="roleRequired" runat="server" ControlToValidate="roleButtons" ErrorMessage="* Required"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
@@ -89,7 +93,7 @@
         </td>
         <td>
             <asp:TextBox ID="requestedForDateTb" class="datepicker" runat="server" Width="150px"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="requestedForDateRequired" runat="server" ControlToValidate="requestedForDateTb" ErrorMessage="*"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="requestedForDateRequired" runat="server" ControlToValidate="requestedForDateTb" ErrorMessage="* Required"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>           
@@ -98,10 +102,10 @@
         </td>
         <td>
             <asp:TextBox ID="purposeTb" runat="server" Width="400px" TextMode="MultiLine"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="purposeRequired" runat="server" ControlToValidate="purposeTb" ErrorMessage="*"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="purposeRequired" runat="server" ControlToValidate="purposeTb" ErrorMessage="* Required"></asp:RequiredFieldValidator>
             
         </td>
     </tr>       
 </table>
-<asp:Button ID="saveRequest" runat="server" Text="Make Request" onclick="saveRequest_Click"/>
+<asp:Button ID="saveRequest" runat="server" Text="Make Request" onclick="saveRequest_Click"/><br />
 </asp:Content>

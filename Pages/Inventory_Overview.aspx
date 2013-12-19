@@ -64,7 +64,7 @@
             <SortedDescendingCellStyle BackColor="#D8D8F0" />
             <SortedDescendingHeaderStyle BackColor="#3E3277" />
         </asp:GridView>
-        <asp:SqlDataSource ID="sds_Items" runat="server" ConnectionString="<%$ ConnectionStrings:CNMTInventoryConnectionString %>" DeleteCommand="DELETE FROM [items] WHERE [itemid] = @itemid" InsertCommand="INSERT INTO [items] ([name], [categoryname], [description], [imagepath], [available], [staffonly]) VALUES (@name, @categoryname, @description, @imagepath, @available, @staffonly)" SelectCommand="SELECT [itemid], [name], [categoryname], [description], [imagepath], [available], [staffonly] FROM [items]" UpdateCommand="UPDATE [items] SET [name] = @name, [categoryname] = @categoryname, [description] = @description, [imagepath] = @imagepath, [available] = @available, [staffonly] = @staffonly WHERE [itemid] = @itemid">
+        <asp:SqlDataSource ID="sds_Items" runat="server" ConnectionString="<%$ ConnectionStrings:Database %>" DeleteCommand="DELETE FROM [items] WHERE [itemid] = @itemid" InsertCommand="INSERT INTO [items] ([name], [categoryname], [description], [imagepath], [available], [staffonly]) VALUES (@name, @categoryname, @description, @imagepath, @available, @staffonly)" SelectCommand="SELECT [itemid], [name], [categoryname], [description], [imagepath], [available], [staffonly] FROM [items]" UpdateCommand="UPDATE [items] SET [name] = @name, [categoryname] = @categoryname, [description] = @description, [imagepath] = @imagepath, [available] = @available, [staffonly] = @staffonly WHERE [itemid] = @itemid">
             <DeleteParameters>
                 <asp:Parameter Name="itemid" Type="Int32" />
             </DeleteParameters>
